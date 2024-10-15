@@ -321,7 +321,7 @@
       nunjucks.installJinjaCompat()
 
       const raiseRegex = /\[\[ERROR\]\](?<err>.*?)\[\[\/ERROR\]\]/;
-      const whitespaceRegex = /\s{2,}/;
+      const whitespaceRegex = /\s{2,}/g;
 
       
       const macros = [
