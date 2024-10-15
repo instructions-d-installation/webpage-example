@@ -1,0 +1,500 @@
+<!doctype html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+    <title>PyTorch Install Schema</title>
+    <meta name="description" content=This is a schema which is used for constructing interactive installation instructions. />
+
+    <script src="https://cdn.jsdelivr.net/npm/nunjucks@3/browser/nunjucks.min.js"></script>
+
+    <script>
+      "use strict";
+
+      let input = new Map();
+      let radio = new Set();
+      let bool = new Set();
+      let availableEnumValues = new Map();
+    </script>
+
+  </head>
+  <body>
+    <header class="container">
+      <hgroup>
+        <h1>PyTorch Install Schema</h1>
+        <p>This is a schema which is used for constructing interactive installation instructions.</p>
+      </hgroup>
+    </header>
+    <main class="container">
+
+      <form>
+
+        
+          
+            
+  
+  
+    
+  
+    
+  
+
+  <script>
+    availableEnumValues.set("build", []);
+  </script>
+
+  <hgroup>
+    <h4>Build</h4>
+    <p>Use the latest or the tested version.</p>
+  </hgroup>
+  <fieldset>
+    
+      
+        <input type="radio" name="build" id=stable onchange="render()" checked />
+      
+      <label for="stable">
+      
+        Stable (2.3.0)  
+      </label>
+
+      <script>
+        availableEnumValues.set("build", [...availableEnumValues.get("build"), "stable"]);
+      </script>
+    
+      
+        <input type="radio" name="build" id=preview onchange="render()"  />
+      
+      <label for="preview">
+      
+        Preview (Nightly)  
+      </label>
+
+      <script>
+        availableEnumValues.set("build", [...availableEnumValues.get("build"), "preview"]);
+      </script>
+    
+  </fieldset>
+
+  <script>
+    input.set("build", "stable")
+    radio.add("build")
+  </script>
+
+          
+        
+          
+            
+  
+  
+    
+  
+    
+  
+    
+  
+
+  <script>
+    availableEnumValues.set("os", []);
+  </script>
+
+  <hgroup>
+    <h4>Operating System</h4>
+    <p>The operating system you use.</p>
+  </hgroup>
+  <fieldset>
+    
+      
+        <input type="radio" name="os" id=linux onchange="render()"  />
+      
+      <label for="linux">
+      
+        Linux  
+      </label>
+
+      <script>
+        availableEnumValues.set("os", [...availableEnumValues.get("os"), "linux"]);
+      </script>
+    
+      
+        <input type="radio" name="os" id=mac onchange="render()"  />
+      
+      <label for="mac">
+      
+        Mac  
+      </label>
+
+      <script>
+        availableEnumValues.set("os", [...availableEnumValues.get("os"), "mac"]);
+      </script>
+    
+      
+        <input type="radio" name="os" id=win onchange="render()" checked />
+      
+      <label for="win">
+      
+        Windows  
+      </label>
+
+      <script>
+        availableEnumValues.set("os", [...availableEnumValues.get("os"), "win"]);
+      </script>
+    
+  </fieldset>
+
+  <script>
+    input.set("os", "win")
+    radio.add("os")
+  </script>
+
+          
+        
+          
+            
+  
+  
+    
+  
+    
+  
+
+  <script>
+    availableEnumValues.set("package", []);
+  </script>
+
+  <hgroup>
+    <h4>Package Manager</h4>
+    <p>The package manager you use.</p>
+  </hgroup>
+  <fieldset>
+    
+      
+        <input type="radio" name="package" id=conda onchange="render()"  />
+      
+      <label for="conda">
+      
+        Conda  
+      </label>
+
+      <script>
+        availableEnumValues.set("package", [...availableEnumValues.get("package"), "conda"]);
+      </script>
+    
+      
+        <input type="radio" name="package" id=pip onchange="render()" checked />
+      
+      <label for="pip">
+      
+        Pip  
+      </label>
+
+      <script>
+        availableEnumValues.set("package", [...availableEnumValues.get("package"), "pip"]);
+      </script>
+    
+  </fieldset>
+
+  <script>
+    input.set("package", "pip")
+    radio.add("package")
+  </script>
+
+          
+        
+          
+            
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  <script>
+    availableEnumValues.set("compute_platform", []);
+  </script>
+
+  <hgroup>
+    <h4>Compute Platform</h4>
+    <p>Should your gpu or your cpu handle the task?</p>
+  </hgroup>
+  <fieldset>
+    
+      
+        <input type="radio" name="compute_platform" id=cu118 onchange="render()" checked />
+      
+      <label for="cu118">
+      
+        CUDA 11.8  
+      </label>
+
+      <script>
+        availableEnumValues.set("compute_platform", [...availableEnumValues.get("compute_platform"), "cu118"]);
+      </script>
+    
+      
+        <input type="radio" name="compute_platform" id=cu121 onchange="render()"  />
+      
+      <label for="cu121">
+      
+        CUDA 12.1  
+      </label>
+
+      <script>
+        availableEnumValues.set("compute_platform", [...availableEnumValues.get("compute_platform"), "cu121"]);
+      </script>
+    
+      
+        <input type="radio" name="compute_platform" id=ro60 onchange="render()"  />
+      
+      <label for="ro60">
+      
+        ROCm 6.0  
+      </label>
+
+      <script>
+        availableEnumValues.set("compute_platform", [...availableEnumValues.get("compute_platform"), "ro60"]);
+      </script>
+    
+      
+        <input type="radio" name="compute_platform" id=cpu onchange="render()"  />
+      
+      <label for="cpu">
+      
+        CPU  
+      </label>
+
+      <script>
+        availableEnumValues.set("compute_platform", [...availableEnumValues.get("compute_platform"), "cpu"]);
+      </script>
+    
+  </fieldset>
+
+  <script>
+    input.set("compute_platform", "cu118")
+    radio.add("compute_platform")
+  </script>
+
+          
+        
+      </form>
+
+      <h4>Instructions</h4>
+      <div>
+        <pre>
+          <Code id="output"></Code>
+        </pre>
+      </div>
+      <button id="copybtn" class="secondary" onclick="copyToClipboard()" style="width: 100%;">Copy</button>
+
+    </main>
+    <footer class="container">
+      <small>
+        <p>
+          This website was generated using 
+          <a href="https://github.com/instructions-d-installation/web-installation-instruction" class="secondary">web-installation-instruction</a>, 
+          which is under 
+          <a href="https://github.com/instructions-d-installation/web-installation-instruction/blob/main/LICENSE" class="secondary">Apache-2.0</a>,
+          and utilizes 
+          <a href="https://picocss.com/" class="secondary">Pico CSS</a>, licensed under 
+          <a href="https://github.com/picocss/pico/blob/main/LICENSE.md" class="secondary">MIT</a>, and
+          <a href="https://mozilla.github.io/nunjucks/" class="secondary">Nunjucks</a>, licensed under
+          <a href="https://github.com/mozilla/nunjucks/blob/master/LICENSE" class="secondary">BSD-2-Clause</a>.
+        </p>
+      </small>
+    </footer>
+
+    <script>
+      nunjucks.configure({ autoescape: true, trimBlocks: true, lstripBlocks: true });
+      nunjucks.installJinjaCompat()
+
+      const raiseRegex = /\[\[ERROR\]\](?<err>.*?)\[\[\/ERROR\]\]/;
+      const whitespaceRegex = /\s{2,}/;
+
+      
+      const macros = [
+        "{% macro raise(error) %} [[ERROR]]{{ error }}[[/ERROR]] {% endmacro %}",
+        `{% macro command() %}
+            {% filter replace("\n", " ") %}
+                {{ caller() }}
+            {% endfilter %} 
+        {% endmacro %}`
+      ];
+      
+
+      const template = nunjucks.compile(macros.join("\n") + `{# Adams spaghetti code #}
+{% if package == "conda" %}
+    conda install
+
+    {% if os == "mac" %}
+        {% if compute_platform == "cpu" %}
+            pytorch{{ "-nightly" if build == "preview" }}::pytorch torchvision torchaudio
+        {% else %}
+            {{ raise("Mac does not support ROCm or CUDA!") }}
+        {% endif %}
+    {% else %}
+        pytorch torchvision torchaudio
+
+        {% if compute_platform == "cu118" %}
+            pytorch-cuda=11.8 -c nvidia
+        {% elif compute_platform == "cu121" %}
+            pytorch-cuda=12.1 -c nvidia
+        {% elif compute_platform == "ro60" %}
+            {{ raise("ROCm is currently not supported with conda on linux and not supported at all on windows!") }}
+        {% else %}
+            cpuonly
+        {% endif %}
+    {% endif %}
+
+    -c pytorch{{ "-nightly" if build == "preview" }}
+
+{% elif package == "pip" %}
+    pip3 install {{ "--pre" if build == "preview" }} torch torchvision torchaudio
+
+    {% if os == "mac" %}
+        {{ raise("Mac does not support ROCm or CUDA!") if compute_platform != "cpu" }}
+        {% if build == "preview" %}
+            --index-url https://download.pytorch.org/whl/nightly/cpu
+        {% endif %}
+    {% else %}
+
+        {% if compute_platform == "cu118" %}
+                --index-url https://download.pytorch.org/whl/{{ "nightly/" if build == "preview" }}cu118
+
+        {% elif compute_platform == "cu121" %}
+            {% if build == "preview" %}
+                --index-url https://download.pytorch.org/whl/nightly/cu121
+            {% else %}
+                {% if os == "win" %}
+                    --index-url https://download.pytorch.org/whl/cu121
+                {% endif %}
+            {% endif %}
+
+        {% elif compute_platform == "ro60" %}
+            {{ raise("Windows does not support ROCm!") if os != "linux" }}
+            --index-url https://download.pytorch.org/whl/{{ "nightly/" if build == "preview" }}rocm6.0
+
+        {# CPU #}
+        {% else %}
+            {% if build == "preview" %}
+                --index-url https://download.pytorch.org/whl/nightly/cpu
+            {% else %}
+                {% if os == "linux" %}
+                    --index-url https://download.pytorch.org/whl/cpu
+                {% endif %}
+            {% endif %}
+        {% endif %}
+    {% endif %}
+{% endif %}`);
+
+
+      const defaultProperties = {
+        "__os__": getOS
+      };
+
+      for (const [property, defaultGetter] of Object.entries(defaultProperties)) {
+        let defaultValue = input.get(property);
+        if (defaultValue === "None") {
+          defaultValue = null;
+        }
+
+        let availableValues = availableEnumValues.get(property);
+        let realValue = defaultGetter();
+        if (!availableValues.includes(realValue)) {
+          realValue = null;
+        }
+        let resultValue = realValue ?? defaultValue;
+        input.set(property, resultValue)
+
+        if (resultValue) {
+          document.getElementById(resultValue).checked = true;
+        }
+      }
+
+      let defaultInput = structuredClone(input);
+
+      let copyBtn = document.getElementById("copybtn");
+      let outputElem = document.getElementById("output");
+      let outputDefaultStyle = outputElem.style.getPropertyValue("--pico-code-color");
+      let output;
+
+      render()
+
+
+      function render() {
+        for (const key of input.keys()) {
+          let val;
+          if (radio.has(key)) {
+            val = document.querySelector(`input[name="${key}"]:checked`)?.id;
+          } else if (bool.has(key)) {
+            val = document.getElementById(key)?.checked
+          } else {
+            val = document.getElementById(key)?.value || defaultInput.get(key);
+          }
+          input.set(key, val);
+        }
+        output = template.render(Object.fromEntries(input.entries()));
+        let errmsg = output.match(raiseRegex)?.[1];
+        output = errmsg || output;
+
+        let outputArray = output.split("\n");
+        let resultArray = [];
+
+        for (var i = 0; i < outputArray.length; i++) {
+          let resultLine = outputArray[i].trim().replace(whitespaceRegex, " ");
+          if (resultLine) {
+            resultArray.push(resultLine);
+          }
+        }
+
+        outputElem.innerHTML = resultArray.join("\n");
+
+        if (errmsg) {
+          copyBtn.setAttribute("disabled", "disabled");
+          outputElem.style.setProperty("--pico-code-color", "#ff6700");
+        } else {
+          copyBtn.removeAttribute("disabled");
+          outputElem.style.setProperty("--pico-code-color", outputDefaultStyle);
+        }
+      }
+
+      function copyToClipboard() {
+        navigator.clipboard.writeText(output);
+      }
+
+      function getOS() {
+        const userAgent = navigator.userAgent.toLowerCase();
+        const supportedOS = {
+          android: /.*android.*/g,
+          ios: /.*iphone.*/g,
+          windows: /.*windows.*/g,
+          linux: /.*linux.*/g,
+          macos: /.*macintosh.*/g,
+          openbsd: /.*openbsd.*/g,
+          freebsd: /.*freebsd.*/g
+        };
+        
+        for (const os in supportedOS) {
+          if (supportedOS[os].test(userAgent)) {
+            return os;
+          }
+        }
+
+        return null;
+      }
+    </script>
+
+  </body>
+</html>
