@@ -103,7 +103,7 @@
   
 
   <script>
-    availableEnumValues.set("os", []);
+    availableEnumValues.set("__os__", []);
   </script>
 
   <hgroup>
@@ -113,7 +113,7 @@
   <fieldset>
     
       
-        <input type="radio" name="os" id=linux onchange="render()"  />
+        <input type="radio" name="__os__" id=linux onchange="render()"  />
       
       <label for="linux">
       
@@ -121,38 +121,38 @@
       </label>
 
       <script>
-        availableEnumValues.set("os", [...availableEnumValues.get("os"), "linux"]);
+        availableEnumValues.set("__os__", [...availableEnumValues.get("__os__"), "linux"]);
       </script>
     
       
-        <input type="radio" name="os" id=mac onchange="render()"  />
+        <input type="radio" name="__os__" id=macos onchange="render()"  />
       
-      <label for="mac">
+      <label for="macos">
       
         Mac  
       </label>
 
       <script>
-        availableEnumValues.set("os", [...availableEnumValues.get("os"), "mac"]);
+        availableEnumValues.set("__os__", [...availableEnumValues.get("__os__"), "macos"]);
       </script>
     
       
-        <input type="radio" name="os" id=win onchange="render()" checked />
+        <input type="radio" name="__os__" id=windows onchange="render()"  />
       
-      <label for="win">
+      <label for="windows">
       
         Windows  
       </label>
 
       <script>
-        availableEnumValues.set("os", [...availableEnumValues.get("os"), "win"]);
+        availableEnumValues.set("__os__", [...availableEnumValues.get("__os__"), "windows"]);
       </script>
     
   </fieldset>
 
   <script>
-    input.set("os", "win")
-    radio.add("os")
+    input.set("__os__", "None")
+    radio.add("__os__")
   </script>
 
           
@@ -334,7 +334,10 @@
       ];
       
 
-      const template = nunjucks.compile(macros.join("\n") + `{# Adams spaghetti code #}
+      const template = nunjucks.compile(macros.join("\n") + `{# command is macro which simply removes line breaks. #}
+{% call command() %}
+
+{# Adams spaghetti code #}
 {% if package == "conda" %}
     conda install
 
@@ -397,7 +400,8 @@
             {% endif %}
         {% endif %}
     {% endif %}
-{% endif %}`);
+{% endif %}
+{% endcall %}`);
 
 
       const defaultProperties = {
